@@ -1,8 +1,8 @@
 # pull the Node.js Docker image
-FROM node:alpine
+FROM node:12
 
 # create the directory inside the container
-WORKDIR /usr/src/wrokspace
+WORKDIR /wrokspace
 
 # copy the package.json files from local machine to the workdir in container
 COPY package.json ./
@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 # our app is running on port 5000 within the container, so need to expose it
-EXPOSE 8001
+EXPOSE 3001
 
 # the command that starts our app
 CMD ["npm", "start"]

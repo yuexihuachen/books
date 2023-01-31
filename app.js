@@ -4,7 +4,7 @@ const fs = require("fs")
 const cookieParser = require('cookie-parser')
 
 const app = express()
-const port = 8001
+const port = 3001
 
 app.use(cookieParser())
 app.use(express.static('.'));
@@ -30,28 +30,20 @@ app.get('/', (req, res) => {
   res.send(html)
 })
 
-app.get('/upload', (req, res) => {
-  const loginVal = req.cookies.key
-  let uploadHtml = ""
-  if (loginVal === "readbook") {
-    uploadHtml = `
-    <label class="file-label" for="btnForm">
-      <input id="btnForm" type="file" name="resume">
-    </label>
-    <button id="handformFile">upload file</button>
-    <script src="/public/js/index.js"></script>
-    `
-  }
+app.get('/bookupload', (req, res) => {
+  let uploadHtml = `
+  <label class="file-label" for="btnForm">
+    <input id="btnForm" type="file" name="resume">
+  </label>
+  <button id="handformFile">upload file</button>
+  <script src="/public/js/index.js"></script>
+  `
   res.send(uploadHtml)
 })
 
 
 
 app.post("/uploadFormFile", (req, res) => {
-  const loginVal = req.cookies.key
-  if (loginVal !== "readbook") {
-    return ;
-  }
   let sampleFile;
   let uploadPath;
 
@@ -60,7 +52,7 @@ app.post("/uploadFormFile", (req, res) => {
   }
 
   sampleFile = req.files.sampleFile;
-  uploadPath = __dirname + '/pdfs/' + sampleFile.name;
+  uploadPath = __dirname + '/pdfs/' + decodeURIComponent(sampleFile.name);
 
   sampleFile.mv(uploadPath, function(err) {
     if (err)

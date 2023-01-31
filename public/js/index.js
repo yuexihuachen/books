@@ -15,6 +15,7 @@ btnBase64.addEventListener("change", function() {
 
 btnHand.addEventListener("click", () => {
   let fd = new FormData()
+  fileName = encodeURIComponent(fileName)
   let file = new File([arrayBufferStr],fileName, { type: fileType })
   fd.append("sampleFile", file)
 
