@@ -1,5 +1,5 @@
 {
-  "name": "read book",
+  "name": "read-book",
   "version": "1.0.0",
   "description": "图书浏览",
   "main": "app.js",

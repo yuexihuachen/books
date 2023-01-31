@@ -30,7 +30,7 @@ app.get('/', (req, res) => {
   res.send(html)
 })
 
-app.get('/bookupload', (req, res) => {
+app.get('/fileupload', (req, res) => {
   let uploadHtml = `
   <label class="file-label" for="btnForm">
     <input id="btnForm" type="file" name="resume">
@@ -52,7 +52,13 @@ app.post("/uploadFormFile", (req, res) => {
   }
 
   sampleFile = req.files.sampleFile;
-  uploadPath = __dirname + '/pdfs/' + decodeURIComponent(sampleFile.name);
+  const fileName = decodeURIComponent(sampleFile.name)
+
+  uploadPath = __dirname + '/pdfs/' + fileName;
+
+  if (fileName.includes(".json")) {
+    uploadPath = __dirname + '/json/' + fileName;
+  }
 
   sampleFile.mv(uploadPath, function(err) {
     if (err)
