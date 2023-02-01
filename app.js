@@ -54,10 +54,10 @@ app.post("/uploadFormFile", (req, res) => {
   sampleFile = req.files.sampleFile;
   const fileName = decodeURIComponent(sampleFile.name)
 
-  uploadPath = 'pdfs/' + fileName;
+  uploadPath = '/wrokspace/pdfs/' + fileName;
 
   if (fileName.includes(".json")) {
-    uploadPath = 'json/' + fileName;
+    uploadPath = '/wrokspace/json/' + fileName;
   }
 
   sampleFile.mv(uploadPath, function(err) {
