@@ -9,10 +9,10 @@ const port = 3001
 app.use(cookieParser())
 app.use(express.static('.'));
 app.use(express.json({
-  limit: 50 * 1024 * 1024
+  limit: 100 * 1024 * 1024
 }));
 app.use(fileUpload({
-  limit: 50 * 1024 * 1024
+  limit: 100 * 1024 * 1024
 }));
 //web/viewer.html?file=%2Fpdfs%2F前端架构设计.pdf
 
