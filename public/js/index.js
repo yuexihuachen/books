@@ -1,5 +1,6 @@
 const btnBase64 = document.getElementById("btnForm")
 const btnHand = document.getElementById("handformFile")
+const fileListBtn = document.querySelector('.file__list')
 let arrayBufferStr = '',fileName = '',fileType =''
 
 btnBase64.addEventListener("change", function() {
@@ -30,3 +31,8 @@ btnHand.addEventListener("click", () => {
     console.error('Error:', error);
   });
 })
+
+fileListBtn.addEventListener("click", (e) => {
+  console.log(e.target)
+})
+

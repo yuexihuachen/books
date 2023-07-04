@@ -2,6 +2,8 @@ const express = require('express')
 const fileUpload = require('express-fileupload')
 const fs = require("fs")
 const cookieParser = require('cookie-parser')
+const path = require('path');
+
 
 const app = express()
 const port = 3001
@@ -22,10 +24,16 @@ app.get('/', (req, res) => {
     <a target="_blank" href='web/viewer.html?file=%2Fpdfs%2F${bookName}'>
     ${bookName}
     </a>
+    <a target="_blank" href='/pdfs/${bookName}' class="download">下载</a>
+    <button data-name="${bookName}" class="delete">删除</button>
   </p>`)
   const html = `
+    <link rel="stylesheet" href="/styles/customize.css">
     <h1>Book List</h1>
+    <div class="file__list">
     ${bookHtml.join('')}
+    </div>
+    <script src="/public/js/home.js"></script>
   `
   res.send(html)
 })
@@ -41,7 +49,21 @@ app.get('/fileupload', (req, res) => {
   res.send(uploadHtml)
 })
 
+app.post("/deleteFile", (req, res) => {
+  const query = req.body
+  let result = {
+    message: `failed to delete`
+  }
+  try {
+    const filePath = path.join(__dirname,`pdfs/${query.name}`)
+    fs.unlinkSync(filePath)
+    result.message = `successfully deleted ${query.name}`
+  } catch (err) {
 
+  }
+  
+  res.send(result)
+})
 
 app.post("/uploadFormFile", (req, res) => {
   let sampleFile;
