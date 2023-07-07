@@ -30,7 +30,7 @@ app.get('/', (req, res) => {
     ${bookName}
     </a>
     <a target="_blank" href='/pdfs/${bookName}' class="download">下载</a>
-    <button data-name="${bookName}" class="delete">删除</button>
+    <button data-name="${bookName}" data-path="pdfs" class="delete">删除</button>
   </p>`)
   const html = `
     <link rel="stylesheet" href="/styles/customize.css">
@@ -51,7 +51,7 @@ app.get('/file', (req, res) => {
     ${bookName}
     </a>
     <a target="_blank" href='/pdfs/${bookName}' class="download">下载</a>
-    <button data-name="${bookName}" class="delete">删除</button>
+    <button data-name="${bookName}" data-path="file" class="delete">删除</button>
   </p>`)
   const html = `
     <link rel="stylesheet" href="/styles/customize.css">
@@ -82,7 +82,7 @@ app.post("/deleteFile", (req, res) => {
     message: `failed to delete`
   }
   try {
-    const filePath = path.join(__dirname,`pdfs/${query.name}`)
+    const filePath = path.join(__dirname,`${query.path}/${query.name}`)
     fs.unlinkSync(filePath)
     result.message = `successfully deleted ${query.name}`
   } catch (err) {
