@@ -3,11 +3,16 @@ const fileUpload = require('express-fileupload')
 const fs = require("fs")
 const cookieParser = require('cookie-parser')
 const path = require('path');
-
+const st = require('st');
 
 const app = express()
 const port = 3001
 
+const mount = st({
+  path: 'json',
+  cache: true
+})
+app.use('/json',mount)
 app.use(cookieParser())
 app.use(express.static('.'));
 app.use(express.json({
@@ -37,6 +42,28 @@ app.get('/', (req, res) => {
   `
   res.send(html)
 })
+
+
+app.get('/file', (req, res) => {
+  const bookList = fs.readdirSync(`${__dirname}/file`)
+  const bookHtml = bookList.map(bookName => `<p>
+    <a target="_blank" href='web/viewer.html?file=%2Fpdfs%2F${bookName}'>
+    ${bookName}
+    </a>
+    <a target="_blank" href='/pdfs/${bookName}' class="download">下载</a>
+    <button data-name="${bookName}" class="delete">删除</button>
+  </p>`)
+  const html = `
+    <link rel="stylesheet" href="/styles/customize.css">
+    <h1>File List</h1>
+    <div class="file__list">
+    ${bookHtml.join('')}
+    </div>
+    <script src="/public/js/home.js"></script>
+  `
+  res.send(html)
+})
+
 
 app.get('/fileupload', (req, res) => {
   let uploadHtml = `
@@ -76,10 +103,14 @@ app.post("/uploadFormFile", (req, res) => {
   sampleFile = req.files.sampleFile;
   const fileName = decodeURIComponent(sampleFile.name)
 
-  uploadPath = '/wrokspace/pdfs/' + fileName;
+  uploadPath = '/wrokspace/file/' + fileName;
 
   if (fileName.includes(".json")) {
     uploadPath = '/wrokspace/json/' + fileName;
+  }
+
+  if (fileName.includes(".pdf")) {
+    uploadPath = '/wrokspace/pdfs/' + fileName;
   }
 
   sampleFile.mv(uploadPath, function(err) {
