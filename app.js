@@ -9,10 +9,10 @@ const app = express()
 const port = 3001
 
 const mount = st({
-  path: 'json',
+  path: 'jsondir',
   cache: true
 })
-app.use('/json',mount)
+app.use('/jsondir',mount)
 app.use(cookieParser())
 app.use(express.static('.'));
 app.use(express.json({
@@ -24,13 +24,13 @@ app.use(fileUpload({
 //web/viewer.html?file=%2Fpdfs%2F前端架构设计.pdf
 
 app.get('/', (req, res) => {
-  const bookList = fs.readdirSync(`${__dirname}/pdfs`)
+  const bookList = fs.readdirSync(`${__dirname}/pdfsdir`)
   const bookHtml = bookList.map(bookName => `<p>
-    <a target="_blank" href='web/viewer.html?file=%2Fpdfs%2F${bookName}'>
+    <a target="_blank" href='web/viewer.html?file=%2Fpdfsdir%2F${bookName}'>
     ${bookName}
     </a>
-    <a target="_blank" href='/pdfs/${bookName}' class="download">下载</a>
-    <button data-name="${bookName}" data-path="pdfs" class="delete">删除</button>
+    <a data-path='pdfsdir' data-name='${bookName}' class="download">下载</a>
+    <button data-name="${bookName}" data-path="pdfsdir" class="delete">删除</button>
   </p>`)
   const html = `
     <link rel="stylesheet" href="/styles/customize.css">
@@ -45,13 +45,13 @@ app.get('/', (req, res) => {
 
 
 app.get('/file', (req, res) => {
-  const bookList = fs.readdirSync(`${__dirname}/file`)
+  const bookList = fs.readdirSync(`${__dirname}/filesdir`)
   const bookHtml = bookList.map(bookName => `<p>
-    <a target="_blank" href='web/viewer.html?file=%2Fpdfs%2F${bookName}'>
+    <a>
     ${bookName}
     </a>
-    <a target="_blank" href='/pdfs/${bookName}' class="download">下载</a>
-    <button data-name="${bookName}" data-path="file" class="delete">删除</button>
+    <a data-path='filesdir' data-name='${bookName}' class="download">下载</a>
+    <button data-name="${bookName}" data-path="filesdir" class="delete">删除</button>
   </p>`)
   const html = `
     <link rel="stylesheet" href="/styles/customize.css">
@@ -62,6 +62,20 @@ app.get('/file', (req, res) => {
     <script src="/public/js/home.js"></script>
   `
   res.send(html)
+})
+
+app.get("/downloadFile", (req, res, next) => {
+  const params = req.query;
+  const fileStream = fs.createReadStream(`./${params.path}/${params.fileName}`);
+  fileStream.on("open",() => {
+    res.attachment(params.fileName);
+    fileStream.pipe(res)
+  })
+
+  fileStream.on("error",(err) => {
+    next(err)
+  })
+
 })
 
 
@@ -103,14 +117,14 @@ app.post("/uploadFormFile", (req, res) => {
   sampleFile = req.files.sampleFile;
   const fileName = decodeURIComponent(sampleFile.name)
 
-  uploadPath = '/wrokspace/file/' + fileName;
+  uploadPath = '/wrokspace/filesdir/' + fileName;
 
   if (fileName.includes(".json")) {
-    uploadPath = '/wrokspace/json/' + fileName;
+    uploadPath = '/wrokspace/jsondir/' + fileName;
   }
 
   if (fileName.includes(".pdf")) {
-    uploadPath = '/wrokspace/pdfs/' + fileName;
+    uploadPath = '/wrokspace/pdfsdir/' + fileName;
   }
 
   sampleFile.mv(uploadPath, function(err) {

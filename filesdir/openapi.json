@@ -1,0 +1,1408 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "Typology Service API document",
+    "description" : "Typology Service API document",
+    "termsOfService" : "http://swagger.io/terms/",
+    "contact" : {
+      "email" : "chochen@paypal.com"
+    }
+  },
+  "paths" : {
+    "/categories" : {
+      "get" : {
+        "operationId" : "index",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "query",
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "name",
+          "in" : "query",
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "fuzzy",
+          "in" : "query",
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "page",
+          "in" : "query",
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        }, {
+          "name" : "size",
+          "in" : "query",
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        } ],
+        "responses" : {
+          "default" : {
+            "description" : "default response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/PageCategory"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "operationId" : "create",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Category"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "default" : {
+            "description" : "default response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Category"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/categories/{id}" : {
+      "get" : {
+        "operationId" : "show",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        } ],
+        "responses" : {
+          "default" : {
+            "description" : "default response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Category"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete" : {
+        "operationId" : "delete",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        } ],
+        "responses" : {
+          "default" : {
+            "description" : "default response",
+            "content" : {
+              "application/json" : { }
+            }
+          }
+        }
+      },
+      "patch" : {
+        "operationId" : "update",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "string"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "default" : {
+            "description" : "default response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Category"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/indicators" : {
+      "get" : {
+        "operationId" : "index_1",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "query",
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "name",
+          "in" : "query",
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "fuzzy",
+          "in" : "query",
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "page",
+          "in" : "query",
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        }, {
+          "name" : "size",
+          "in" : "query",
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        }, {
+          "name" : "category",
+          "in" : "query",
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "default" : {
+            "description" : "default response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/PageIndicator"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "operationId" : "create_1",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Indicator"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "default" : {
+            "description" : "default response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Indicator"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/indicators/{id}" : {
+      "get" : {
+        "operationId" : "show_1",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        } ],
+        "responses" : {
+          "default" : {
+            "description" : "default response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Indicator"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete" : {
+        "operationId" : "delete_1",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        } ],
+        "responses" : {
+          "default" : {
+            "description" : "default response",
+            "content" : {
+              "application/json" : { }
+            }
+          }
+        }
+      },
+      "patch" : {
+        "operationId" : "update_1",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "string"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "default" : {
+            "description" : "default response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Indicator"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/query/indicatorOf" : {
+      "post" : {
+        "operationId" : "indicatorOf",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/IndicatorOfCategoryRequest"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "default" : {
+            "description" : "default response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/IndicatorOfCategoryResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/query/matchedCategory" : {
+      "post" : {
+        "operationId" : "matchedCategory",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/MatchedCategoryRequest"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "default" : {
+            "description" : "default response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/MatchedCategoryResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/query/typologyOf" : {
+      "post" : {
+        "operationId" : "typologyOf",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/TypologyOfCategoryRequest"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "default" : {
+            "description" : "default response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/TypologyOfCategoryResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/portal/search" : {
+      "get" : {
+        "operationId" : "index_2",
+        "parameters" : [ {
+          "name" : "fuzzy",
+          "in" : "query",
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "size",
+          "in" : "query",
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        } ],
+        "responses" : {
+          "default" : {
+            "description" : "default response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/PageSearchResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/typologies" : {
+      "get" : {
+        "operationId" : "index_3",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "query",
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "name",
+          "in" : "query",
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "fuzzy",
+          "in" : "query",
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "page",
+          "in" : "query",
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        }, {
+          "name" : "size",
+          "in" : "query",
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        }, {
+          "name" : "category",
+          "in" : "query",
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "default" : {
+            "description" : "default response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/PageTypology"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "operationId" : "create_2",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Typology"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "default" : {
+            "description" : "default response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Typology"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/typologies/{id}" : {
+      "get" : {
+        "operationId" : "show_2",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        } ],
+        "responses" : {
+          "default" : {
+            "description" : "default response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Typology"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete" : {
+        "operationId" : "delete_2",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        } ],
+        "responses" : {
+          "default" : {
+            "description" : "default response",
+            "content" : {
+              "application/json" : { }
+            }
+          }
+        }
+      },
+      "patch" : {
+        "operationId" : "update_2",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "string"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "default" : {
+            "description" : "default response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Typology"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "Category" : {
+        "required" : [ "label", "name" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "name" : {
+            "pattern" : "[a-zA-Z_][a-zA-Z0-9_#-]*",
+            "type" : "string"
+          },
+          "label" : {
+            "type" : "string"
+          },
+          "schema" : {
+            "$ref" : "#/components/schemas/CategorySchema"
+          },
+          "parent_id" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "created_at" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "updated_at" : {
+            "type" : "string",
+            "format" : "date-time"
+          }
+        }
+      },
+      "CategoryField" : {
+        "type" : "object",
+        "properties" : {
+          "type" : {
+            "type" : "string",
+            "enum" : [ "STRING" ]
+          },
+          "name" : {
+            "type" : "string"
+          }
+        }
+      },
+      "CategorySchema" : {
+        "type" : "object",
+        "properties" : {
+          "fields" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/CategoryField"
+            }
+          }
+        }
+      },
+      "Metadata" : {
+        "type" : "object",
+        "properties" : {
+          "size" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "totalElements" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "totalPages" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "number" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        }
+      },
+      "PageCategory" : {
+        "type" : "object",
+        "properties" : {
+          "page" : {
+            "$ref" : "#/components/schemas/Metadata"
+          },
+          "data" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Category"
+            }
+          }
+        }
+      },
+      "EqSeverityCondition" : {
+        "type" : "object",
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/SeverityCondition"
+        } ]
+      },
+      "GeSeverityCondition" : {
+        "type" : "object",
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/SeverityCondition"
+        } ]
+      },
+      "GtSeverityCondition" : {
+        "type" : "object",
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/SeverityCondition"
+        } ]
+      },
+      "Indicator" : {
+        "required" : [ "category", "data_source_name", "data_source_paginate", "data_source_type", "dataset", "description", "domain", "label", "logic", "name", "owner", "refresh_period", "valid_values", "value_sample", "value_type" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "name" : {
+            "pattern" : "[a-zA-Z_][a-zA-Z0-9_#-]*",
+            "type" : "string"
+          },
+          "label" : {
+            "type" : "string"
+          },
+          "description" : {
+            "type" : "string"
+          },
+          "dataset" : {
+            "type" : "string"
+          },
+          "logic" : {
+            "oneOf" : [ {
+              "$ref" : "#/components/schemas/IndicatorJsonLogic"
+            }, {
+              "$ref" : "#/components/schemas/IndicatorSqlLogic"
+            } ]
+          },
+          "owner" : {
+            "type" : "string"
+          },
+          "category" : {
+            "$ref" : "#/components/schemas/Category"
+          },
+          "domain" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "class" : {
+            "type" : "string"
+          },
+          "valid_values" : {
+            "type" : "string"
+          },
+          "value_type" : {
+            "type" : "string"
+          },
+          "value_sample" : {
+            "type" : "string"
+          },
+          "data_source_type" : {
+            "type" : "string",
+            "enum" : [ "BIGQUERY", "METRICS", "GRAPH", "KEYWORD" ]
+          },
+          "data_source_name" : {
+            "type" : "string"
+          },
+          "data_source_paginate" : {
+            "type" : "string",
+            "enum" : [ "NOT_SUPPORT", "CURSOR", "INDEX" ]
+          },
+          "reverse_logic" : {
+            "oneOf" : [ {
+              "$ref" : "#/components/schemas/IndicatorJsonLogic"
+            }, {
+              "$ref" : "#/components/schemas/IndicatorSqlLogic"
+            } ]
+          },
+          "refresh_period" : {
+            "type" : "string"
+          },
+          "related_typologies" : {
+            "type" : "string"
+          },
+          "severity_logic" : {
+            "$ref" : "#/components/schemas/SeverityLogic"
+          },
+          "discipline" : {
+            "type" : "string"
+          },
+          "is_experimental" : {
+            "type" : "boolean"
+          },
+          "visibility" : {
+            "type" : "string"
+          },
+          "tag" : {
+            "type" : "string"
+          },
+          "related_indicators" : {
+            "type" : "string"
+          },
+          "sop_sections" : {
+            "type" : "string"
+          },
+          "insightsBundles" : {
+            "type" : "string"
+          },
+          "created_at" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "updated_at" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "category_id" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "category_name" : {
+            "type" : "string",
+            "writeOnly" : true
+          }
+        }
+      },
+      "IndicatorJsonLogic" : {
+        "type" : "object",
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/IndicatorLogic"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "json" : {
+              "type" : "string"
+            },
+            "postProcessor" : {
+              "type" : "string"
+            }
+          }
+        } ]
+      },
+      "IndicatorLogic" : {
+        "required" : [ "type" ],
+        "type" : "object",
+        "properties" : {
+          "data" : {
+            "type" : "object",
+            "additionalProperties" : {
+              "type" : "object"
+            }
+          },
+          "type" : {
+            "type" : "string"
+          }
+        },
+        "discriminator" : {
+          "propertyName" : "type"
+        }
+      },
+      "IndicatorSqlLogic" : {
+        "type" : "object",
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/IndicatorLogic"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "sql" : {
+              "type" : "string"
+            },
+            "postProcessor" : {
+              "type" : "string"
+            }
+          }
+        } ]
+      },
+      "LeSeverityCondition" : {
+        "type" : "object",
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/SeverityCondition"
+        } ]
+      },
+      "LtSeverityCondition" : {
+        "type" : "object",
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/SeverityCondition"
+        } ]
+      },
+      "SeverityCondition" : {
+        "required" : [ "type" ],
+        "type" : "object",
+        "properties" : {
+          "type" : {
+            "type" : "string"
+          }
+        },
+        "discriminator" : {
+          "propertyName" : "type"
+        }
+      },
+      "SeverityLogic" : {
+        "type" : "object",
+        "properties" : {
+          "levels" : {
+            "type" : "object",
+            "additionalProperties" : {
+              "type" : "array",
+              "items" : {
+                "type" : "array",
+                "items" : {
+                  "oneOf" : [ {
+                    "$ref" : "#/components/schemas/EqSeverityCondition"
+                  }, {
+                    "$ref" : "#/components/schemas/GeSeverityCondition"
+                  }, {
+                    "$ref" : "#/components/schemas/GtSeverityCondition"
+                  }, {
+                    "$ref" : "#/components/schemas/LeSeverityCondition"
+                  }, {
+                    "$ref" : "#/components/schemas/LtSeverityCondition"
+                  } ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "PageIndicator" : {
+        "type" : "object",
+        "properties" : {
+          "page" : {
+            "$ref" : "#/components/schemas/Metadata"
+          },
+          "data" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Indicator"
+            }
+          }
+        }
+      },
+      "IndicatorKeyValue" : {
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string"
+          },
+          "value" : {
+            "type" : "object"
+          },
+          "severity" : {
+            "type" : "string"
+          }
+        }
+      },
+      "IndicatorOfCategoryResponse" : {
+        "type" : "object",
+        "properties" : {
+          "data" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/IndicatorOfCategoryResponseItem"
+            }
+          }
+        }
+      },
+      "IndicatorOfCategoryResponseItem" : {
+        "type" : "object",
+        "properties" : {
+          "indicators" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/IndicatorKeyValue"
+            }
+          },
+          "category_value" : {
+            "type" : "object",
+            "additionalProperties" : {
+              "type" : "object"
+            }
+          }
+        }
+      },
+      "IndicatorOfCategoryRequest" : {
+        "type" : "object",
+        "properties" : {
+          "category_type" : {
+            "type" : "string"
+          },
+          "category_values" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "additionalProperties" : {
+                "type" : "object"
+              }
+            }
+          },
+          "indicator_names" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          }
+        }
+      },
+      "MatchedCategoryResponse" : {
+        "type" : "object",
+        "properties" : {
+          "indicators" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/MatchedCategoryResponseItem"
+            }
+          }
+        }
+      },
+      "MatchedCategoryResponseItem" : {
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string"
+          },
+          "category" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "additionalProperties" : {
+                "type" : "object"
+              }
+            }
+          },
+          "page_info" : {
+            "$ref" : "#/components/schemas/PageInfo"
+          }
+        }
+      },
+      "PageInfo" : {
+        "type" : "object",
+        "properties" : {
+          "size" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "page" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "cursor" : {
+            "type" : "string"
+          }
+        }
+      },
+      "BasicIndicatorRequestItem" : {
+        "type" : "object",
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/IndicatorRequestItem"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "name" : {
+              "type" : "string"
+            },
+            "value" : {
+              "$ref" : "#/components/schemas/ValueCondition"
+            },
+            "logic_placeholder" : {
+              "type" : "object",
+              "additionalProperties" : {
+                "type" : "object"
+              }
+            },
+            "page_info" : {
+              "$ref" : "#/components/schemas/PageInfo"
+            }
+          }
+        } ]
+      },
+      "ExprIndicatorRequestItem" : {
+        "type" : "object",
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/IndicatorRequestItem"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "expr" : {
+              "$ref" : "#/components/schemas/Expression"
+            },
+            "name" : {
+              "type" : "string"
+            },
+            "page_info" : {
+              "$ref" : "#/components/schemas/PageInfo"
+            }
+          }
+        } ]
+      },
+      "Expression" : {
+        "required" : [ "type" ],
+        "type" : "object",
+        "properties" : {
+          "type" : {
+            "type" : "string"
+          }
+        },
+        "discriminator" : {
+          "propertyName" : "type"
+        }
+      },
+      "IndicatorRequestItem" : {
+        "required" : [ "type" ],
+        "type" : "object",
+        "properties" : {
+          "type" : {
+            "type" : "string"
+          }
+        },
+        "discriminator" : {
+          "propertyName" : "type"
+        }
+      },
+      "MatchedCategoryRequest" : {
+        "type" : "object",
+        "properties" : {
+          "category" : {
+            "type" : "string"
+          },
+          "indicators" : {
+            "type" : "array",
+            "items" : {
+              "oneOf" : [ {
+                "$ref" : "#/components/schemas/IndicatorRequestItem"
+              }, {
+                "$ref" : "#/components/schemas/BasicIndicatorRequestItem"
+              }, {
+                "$ref" : "#/components/schemas/ExprIndicatorRequestItem"
+              } ]
+            }
+          },
+          "categoryValues" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "additionalProperties" : {
+                "type" : "object"
+              }
+            }
+          }
+        }
+      },
+      "OpExpression" : {
+        "type" : "object",
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/Expression"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "op" : {
+              "type" : "string",
+              "enum" : [ "not", "and", "or", "=", "<>", ">", ">=", "<", "<=", "+", "-", "*", "/", "distinct", "cast", "case", "call", "between", "like", "is", "in", "filter", "when", "then", "else", "sub_select" ]
+            },
+            "params" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/components/schemas/Expression"
+              }
+            }
+          }
+        } ]
+      },
+      "SymbolExpression" : {
+        "type" : "object",
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/Expression"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "value" : {
+              "type" : "string"
+            }
+          }
+        } ]
+      },
+      "ValueCondition" : {
+        "type" : "object",
+        "properties" : {
+          "op" : {
+            "type" : "string",
+            "enum" : [ "not", "and", "or", "=", "<>", ">", ">=", "<", "<=", "+", "-", "*", "/", "distinct", "cast", "case", "call", "between", "like", "is", "in", "filter", "when", "then", "else", "sub_select" ]
+          },
+          "value" : {
+            "type" : "object"
+          }
+        }
+      },
+      "ValueExpression" : {
+        "type" : "object",
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/Expression"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "value" : {
+              "type" : "object"
+            }
+          }
+        } ]
+      },
+      "TypologyKeyValue" : {
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string"
+          },
+          "indicators" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/IndicatorKeyValue"
+            }
+          },
+          "probability" : {
+            "type" : "string"
+          },
+          "is_highlight" : {
+            "type" : "boolean"
+          },
+          "risk_level" : {
+            "type" : "string"
+          }
+        }
+      },
+      "TypologyOfCategoryResponse" : {
+        "type" : "object",
+        "properties" : {
+          "data" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/TypologyOfCategoryResponseItem"
+            }
+          }
+        }
+      },
+      "TypologyOfCategoryResponseItem" : {
+        "type" : "object",
+        "properties" : {
+          "typologies" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/TypologyKeyValue"
+            }
+          },
+          "category_value" : {
+            "type" : "object",
+            "additionalProperties" : {
+              "type" : "object"
+            }
+          }
+        }
+      },
+      "TypologyOfCategoryRequest" : {
+        "type" : "object",
+        "properties" : {
+          "category_type" : {
+            "type" : "string"
+          },
+          "category_values" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "additionalProperties" : {
+                "type" : "object"
+              }
+            }
+          },
+          "typology_names" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          }
+        }
+      },
+      "PageSearchResult" : {
+        "type" : "object",
+        "properties" : {
+          "page" : {
+            "$ref" : "#/components/schemas/Metadata"
+          },
+          "data" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/SearchResult"
+            }
+          }
+        }
+      },
+      "SearchResult" : {
+        "type" : "object"
+      },
+      "Typology" : {
+        "required" : [ "category", "description", "domain", "is_experimental", "label", "name", "owner", "risk_indicators" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "name" : {
+            "pattern" : "[a-zA-Z_][a-zA-Z0-9_#-]*",
+            "type" : "string"
+          },
+          "label" : {
+            "type" : "string"
+          },
+          "description" : {
+            "type" : "string"
+          },
+          "owner" : {
+            "type" : "string"
+          },
+          "discipline" : {
+            "type" : "string"
+          },
+          "visibility" : {
+            "type" : "string"
+          },
+          "tag" : {
+            "type" : "string"
+          },
+          "klass" : {
+            "type" : "string",
+            "deprecated" : true
+          },
+          "isRiskIndicator" : {
+            "type" : "boolean",
+            "deprecated" : true
+          },
+          "validValues" : {
+            "type" : "string",
+            "deprecated" : true
+          },
+          "valueType" : {
+            "type" : "string",
+            "deprecated" : true
+          },
+          "valueSample" : {
+            "type" : "string",
+            "deprecated" : true
+          },
+          "dataSourceType" : {
+            "type" : "string",
+            "deprecated" : true,
+            "enum" : [ "BIGQUERY", "METRICS", "GRAPH", "KEYWORD" ]
+          },
+          "dataSourceName" : {
+            "type" : "string",
+            "deprecated" : true
+          },
+          "dataSourcePaginate" : {
+            "type" : "string",
+            "deprecated" : true,
+            "enum" : [ "NOT_SUPPORT", "CURSOR", "INDEX" ]
+          },
+          "category" : {
+            "$ref" : "#/components/schemas/Category"
+          },
+          "domain" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "risk_indicators" : {
+            "type" : "string"
+          },
+          "risk_level" : {
+            "type" : "string"
+          },
+          "highlight_threshold" : {
+            "type" : "string"
+          },
+          "is_experimental" : {
+            "type" : "string"
+          },
+          "refresh_period" : {
+            "type" : "string"
+          },
+          "created_at" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "updated_at" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "category_id" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }
+      },
+      "PageTypology" : {
+        "type" : "object",
+        "properties" : {
+          "page" : {
+            "$ref" : "#/components/schemas/Metadata"
+          },
+          "data" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Typology"
+            }
+          }
+        }
+      }
+    }
+  }
+}
