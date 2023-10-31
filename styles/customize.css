@@ -13,3 +13,34 @@
     border-width: 1px;
     font-size: 16px;
 }
+
+/*--
+Galaxi is a user-guided automation and interactive investigation tool aims to improve cost efficiency, accuracy and timeliness for risk investigations. 
+
+Near Real Time Graph enhancement for Galaxi Graph  
+
+now Galaxi supports transaction time range:  last 3 years till most recently  
+What's new in the version 4.8 of Galaxi
+
+Quick Access to see Filters on Global Filter  2.5 Filters
+Track filters by Enhanced Filter Count Display  2.5 Filters
+New Account Tagging filter – ‘No Transaction Attempts in 120 Days’ Filter Option  2.5.3 Account Tagging
+Default Setting with 3 Filters for BRM investigators  2.5.1 Pre-Galaxi User Guide
+
+2.1.1     Search PayPal accounts
+2.1.2     Search Venmo accounts
+2.1.3    Search Xoom accounts
+2.1.4   Search Zettle accounts
+2.1.5   Search Crypto Address
+2.1.6     Search Default Settings
+
+1.1    Seed Transaction Graph
+User can view Transaction Graph by choosing Seed Transaction to display counterparty accounts with a transactional relationship with the Paypal or Venmo seeds, including profile linking within the transaction nodes. Default only hard linking among nodes shall display. Default transaction time period is 3 years (till most recently). 
+
+
+1.2    Seed Profile Graph
+User can view Profile Graph by choosing Seed Profile to display accounts that have profile linking relationship with the seeds, along with the transaction relationship for the profile nodes. Default only hard linking for the seed account as well as the transactions among profile linked nodes are displayed. Default transaction time period is 3 years (till most recently). User can see the transaction as well as linking data under Tabular View feature. 
+
+1.3    Group Linking Graph
+User can view Profile & Transaction Graph by choosing Group Linking to display the profile linking and transaction relationship among a group of Paypal or Venmo accounts. Default only hard linking and transactions among nodes shall display.  Default transaction time period is 3 years (till most recently). 
+*/
